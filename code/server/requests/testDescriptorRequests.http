@@ -1,0 +1,40 @@
+POST http://localhost:3001/api/managerSessions HTTP/1.1
+content-type: application/json
+
+{
+    "username": "manager1@ezwh.com",
+    "password":"testpassword"
+}
+
+###
+GET http://localhost:3001/api/testDescriptors HTTP/1.1
+content-type: application/json
+
+###
+GET http://localhost:3001/api/testDescriptors/1 HTTP/1.1
+content-type: application/json
+
+###
+POST http://localhost:3001/api/testDescriptor HTTP/1.1
+content-type: application/json
+
+{
+            "name":"test descriptor 3",
+            "procedureDescription":"This test is described by...",
+            "idSKU" :1
+        }
+###
+PUT http://localhost:3001/api/testDescriptor/3 HTTP/1.1
+content-type: application/json
+
+{
+            "newName":"test descriptor 1",
+            "newProcedureDescription":"This new test is described by...",
+            "newIdSKU" :4 
+        }
+
+###
+DELETE http://localhost:3001/api/testDescriptor/2 HTTP/1.1
+content-type: application/json
+
+###

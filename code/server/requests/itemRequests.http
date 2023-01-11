@@ -1,0 +1,41 @@
+POST http://localhost:3001/api/managerSessions HTTP/1.1
+content-type: application/json
+
+{
+    "username": "manager1@ezwh.com",
+    "password":"testpassword"
+}
+
+###
+GET http://localhost:3001/api/items HTTP/1.1
+content-type: application/json
+
+###
+GET http://localhost:3001/api/items/:id HTTP/1.1
+content-type: application/json
+
+### SKUid must exist before this, both table's have a price attribute?
+POST http://localhost:3001/api/item HTTP/1.1
+content-type: application/json
+
+{
+    "id" : 1,
+    "description" : "test",
+    "price" : 10,
+    "SKUId" : 1,
+    "supplierId" : 2
+}
+
+###
+PUT http://localhost:3001/api/item/:id HTTP/1.1
+content-type: application/json
+
+{
+    "newDescription" : "newDesc 1",
+    "newPrice" : 20
+}
+
+###
+DELETE http://localhost:3001/api/items/1 HTTP/1.1
+content-type: application/json
+

@@ -1,0 +1,36 @@
+POST http://localhost:3001/api/managerSessions HTTP/1.1
+content-type: application/json
+
+{
+    "username": "manager1@ezwh.com",
+    "password":"testpassword"
+}
+
+###
+GET http://localhost:3001/api/returnOrders HTTP/1.1
+content-type: application/json
+
+###
+
+GET http://localhost:3001/api/returnOrders/:id HTTP/1.1
+content-type: application/json
+
+###
+POST http://localhost:3001/api/returnOrder HTTP/1.1
+content-type: application/json
+
+{
+            "returnDate":"2021/11/29 09:33",
+            "products": [{"SKUId":1,"description":"a product","price":10.99,"RFID":"12345678901234567890123456789015"}],
+            "restockOrderId" : 1
+        }
+
+###
+PUT http://localhost:3001/api/returnOrder/:id HTTP/1.1
+content-type: application/json
+
+###
+GET http://localhost:3001/api/internalOrders HTTP/1.1
+content-type: application/json
+
+###

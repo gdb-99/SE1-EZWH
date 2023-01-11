@@ -1,0 +1,1256 @@
+
+
+  Internal Orders test suite
+    POST Request test to Internal Orders
+      Add a new Internal Order tests
+        1) Successfully add a new Internal Order
+        2) Negative customerId
+        3) Malformed date
+    GET Request tests to Internal Orders
+      4) get all internal orders
+      5) get issued internal orders
+      6) get accepted internal orders
+      7) get internal order by id
+    PUT Request test to Internal Orders
+      Edit an existing Internal Order tests
+        8) Successfully edit an Internal Order
+        9) Edit non-existing Internal Order
+        10) Edit Internal Order with improper state
+    DELETE Request test to Internal Orders
+      Delete an Internal Order tests
+        11) Successfully delete an Internal Order
+        12) Wrong Internal Order id
+
+  Items test suite
+    POST Request test to Items
+      Add a new Item tests
+        13) Successfully add a new Item
+        14) Negative SKUId
+        15) Improper price
+    Standard Item getters
+      16) get all items
+      17) get item by id
+    PUT Request test to Items
+      Edit an existing Item tests
+        18) Successfully edit an Item
+        19) Edit non-existing Item
+        20) Edit Item with improper price
+    DELETE Request test to Items
+      Delete an Item tests
+        21) Successfully delete an Item
+        22) Wrong Item id
+
+  position test suite
+    verify if there are no positions
+      23) get positions
+    successfullty created a position
+      24) create ande get position 
+    successfullty got a list of positions
+      25) create and get position 
+    succeffully edited a position
+      26) create
+    successfully deleted a position
+      27) create, delete, verify 
+    some errors
+      28) there is no correspondence between the position parameters 
+      29) negative maxWeight
+      30) negative maxVolume
+
+  Restock Orders Testing
+    Add and get a new Restock
+      Add a new Restock Order tests
+        31) Succesfully add and get a new Restock Order
+        32) Negative supplierId
+        33) Malformed date
+    Get restock orders
+      34) get all restock orders
+      35) get issued restock orders
+      36) get restock orders by id
+    Items to be returned in restock order test suite
+      37) Restock Order in COMPLETEDRETURN state
+      38) Restock Order in a state different from COMPLETEDRETURN
+    PUT Requests tests to Restock Orders
+      Modify State of a Restock Order by id
+        39) Edit restock order state with proper id
+        40) Edit non-existing Restock Order
+        41) Edit Restock Order with improper state
+      Add a list of SKUItems to a Restock Order by id
+        42) Successfully add a list of SKUItems
+        43) State of Restock Order different from DELIVERED
+        44) State of Restock Order different from DELIVERED
+      Add a transportNote to a Restock Order by id
+        45) Successfully add a transportNote to a Restock Order
+        46) Add transportNote to Restock Order with state different from DELIVERY
+        47) Add transportNote to Restock Order with issueDate newer than delivery date
+    DELETE Requests tests to Restock Orders
+      Delete a Restock Order by id
+        48) Succesfully delete a Restock Order
+
+  Return Orders Tests
+    Create Return Orders Tests
+      49) Succesfullly create a Return Order
+      50) New Return Order with non-existing restockOrderId
+      51) New Return Order with malformed date
+    Get Return Orders Tests
+      All Return Orders
+        52) Get all Return Orders test
+      Return Orders by Id
+        53) Successfully get a Return Order by Id
+        54) Get a non-existing Return Order
+        55) Non-numeric id test
+    Delete Return Orders Tests
+      56) Successfully delete a Return Order
+      57) Delete non-existing Return Order
+
+  sku test suite
+    verify there are no skus at start
+      58) get skus
+    successfully created a sku
+      59) add sku
+    successfully deleted a sku
+      60) add and delete a sku
+    successfully got a list of skus
+      61) add some skus and get all
+    position test
+      62) successfully set a position to a sku
+    some errors
+      63) search for a not existant sku
+      64) negative weight in creation
+      65) negative volume in creation
+      66) negative price in creation
+      67) negative quantity in creation
+      68) an undefined parameter in creation
+      69) modify a non existant sku
+      70) negative parameters in modifySku
+      71) NaN parameters in modifySku
+      72) too much volume for position
+      73) already occupied position
+
+  skuitem test suite
+    successfully added a skuitem
+      74) add skuitem
+      75) get skuitems by skuid
+      76) get skuitem by rfid
+    successfully edited a skuitem
+      77) modify skuitem
+    successfully deleted an skuitem
+      78) delete skuitem
+    some errors
+      79) get non existant skuitem
+      80) invalid rfid in get
+      81) undefined rfid in get
+      82) get skuitems of non existing skuitem
+      83) create skuitem with wrong rfid
+      84) create skuitem with wrong date
+      85) create skuitem with a non existant skuId (this is the last check before creation)
+      86) edit non existant skuitem
+      87) edit skuitem with wrong rfid
+      88) edit skuitem with wrong date
+
+  Test Descriptor test suite
+    Standard Test Descriptor getters
+      89) get all test descriptors
+      90) get test descriptor by id
+    POST Requests tests to Test Descriptor
+      Add a new Test Descriptor tests
+        91) Succesfully add a new Test Descriptor
+        92) Test Descriptor not added, no sku associated idSKU 
+        93) Test Descriptor not added, validation of request body failed 
+    PUT Requests tests to Test Descriptor
+      Edit a Test Descriptor tests
+        94) Succesfully edit Test Descriptor
+        95) Test Descriptor not edited, no test descriptor associated to id 
+        96) Test Descriptor not edited, validation of request body failed because of string id
+    DELETE Requests tests to Test Descriptor
+      Delete a Test Descriptor tests
+        97) Succesfully delete a Test Descriptor
+        98) Test Descriptor not deleted, validation of id failed 
+
+  Test Result test suite
+    Standard Test Result getters
+      99) Succesfully get all test results
+      100) Unsuccesfully get all test results, no sku item associated rfid 
+      101) Unsuccesfully get all test results, validation of rfid failed
+      102) Succesfully get a test result 
+      103) Unsuccesfully get a test results, no sku item associated rfid 
+      104) Unsuccesfully get a test results, validation of rfid failed
+    POST Requests tests to Test Result
+      Add a new Test result tests
+        105) Succesfully add a new Test result
+        106) Test Result not added, no sku item associated to rfid 
+        107) Test Result not added, validation of request body failed 
+    PUT Requests tests to Test Result
+      Edit a Test Result tests
+        108) Succesfully edit Test Resut
+        109) Test Result not edited, no sku item associated to rfid 
+        110) Test Result not edited, validation of request body failed because of wrong rfid
+    DELETE Requests tests to Test Result
+      Delete a Test Result tests
+        111) Succesfully delete a Test Descriptor
+        112) Test Result not deleted, validation of id failed 
+
+  User test suite
+    Standard User getters
+      113) Succesfully get all user info
+      114) Succesfully get all suppliers
+      115) Succesfully get all users
+    POST Requests tests to User
+      Add a new user tests
+        116) Succesfully add a new user
+        117) User not added, user with same email and type already exists 
+        118) User not added, wrong user password 
+      User session test
+        119) Succesfully log a manager
+        120) Succesfully log a customer
+        121) Succesfully log a supplier
+        122) Succesfully log a clerk
+        123) Succesfully log a quality empolyee
+        124) Succesfully log a delivery empolyee
+        125) Succesfully logout
+    PUT Requests tests to User
+      Edit a user tests
+        126) Succesfully edit user
+        127) User not edited, no user associated to username 
+        128) User not edited, username format is not valid 
+    DELETE Requests tests to user
+      Delete a user tests
+        129) Succesfully delete a user
+        130) User not deleted, validation of username failed 
+
+
+  0 passing (10s)
+  130 failing
+
+  1) Internal Orders test suite
+       POST Request test to Internal Orders
+         Add a new Internal Order tests
+           Successfully add a new Internal Order:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\InternalOrderAPITest.js:38:26)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  2) Internal Orders test suite
+       POST Request test to Internal Orders
+         Add a new Internal Order tests
+           Negative customerId:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\InternalOrderAPITest.js:46:26)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  3) Internal Orders test suite
+       POST Request test to Internal Orders
+         Add a new Internal Order tests
+           Malformed date:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\InternalOrderAPITest.js:51:26)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  4) Internal Orders test suite
+       GET Request tests to Internal Orders
+         get all internal orders:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\InternalOrderAPITest.js:60:22)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  5) Internal Orders test suite
+       GET Request tests to Internal Orders
+         get issued internal orders:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\InternalOrderAPITest.js:66:22)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  6) Internal Orders test suite
+       GET Request tests to Internal Orders
+         get accepted internal orders:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\InternalOrderAPITest.js:72:22)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  7) Internal Orders test suite
+       GET Request tests to Internal Orders
+         get internal order by id:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\InternalOrderAPITest.js:78:22)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  8) Internal Orders test suite
+       PUT Request test to Internal Orders
+         Edit an existing Internal Order tests
+           Successfully edit an Internal Order:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\InternalOrderAPITest.js:87:26)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  9) Internal Orders test suite
+       PUT Request test to Internal Orders
+         Edit an existing Internal Order tests
+           Edit non-existing Internal Order:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\InternalOrderAPITest.js:97:26)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  10) Internal Orders test suite
+       PUT Request test to Internal Orders
+         Edit an existing Internal Order tests
+           Edit Internal Order with improper state:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\InternalOrderAPITest.js:103:26)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  11) Internal Orders test suite
+       DELETE Request test to Internal Orders
+         Delete an Internal Order tests
+           Successfully delete an Internal Order:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\InternalOrderAPITest.js:113:26)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  12) Internal Orders test suite
+       DELETE Request test to Internal Orders
+         Delete an Internal Order tests
+           Wrong Internal Order id:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\InternalOrderAPITest.js:118:26)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  13) Items test suite
+       POST Request test to Items
+         Add a new Item tests
+           Successfully add a new Item:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\ItemAPITest.js:36:26)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  14) Items test suite
+       POST Request test to Items
+         Add a new Item tests
+           Negative SKUId:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\ItemAPITest.js:47:26)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  15) Items test suite
+       POST Request test to Items
+         Add a new Item tests
+           Improper price:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\ItemAPITest.js:52:26)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  16) Items test suite
+       Standard Item getters
+         get all items:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\ItemAPITest.js:60:22)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  17) Items test suite
+       Standard Item getters
+         get item by id:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\ItemAPITest.js:67:22)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  18) Items test suite
+       PUT Request test to Items
+         Edit an existing Item tests
+           Successfully edit an Item:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\ItemAPITest.js:76:26)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  19) Items test suite
+       PUT Request test to Items
+         Edit an existing Item tests
+           Edit non-existing Item:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\ItemAPITest.js:86:26)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  20) Items test suite
+       PUT Request test to Items
+         Edit an existing Item tests
+           Edit Item with improper price:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\ItemAPITest.js:92:26)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  21) Items test suite
+       DELETE Request test to Items
+         Delete an Item tests
+           Successfully delete an Item:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\ItemAPITest.js:102:26)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  22) Items test suite
+       DELETE Request test to Items
+         Delete an Item tests
+           Wrong Item id:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\ItemAPITest.js:107:26)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  23) position test suite
+       verify if there are no positions
+         get positions:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\PositionAPITest.js:32:22)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  24) position test suite
+       successfullty created a position
+         create ande get position :
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\PositionAPITest.js:41:23)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  25) position test suite
+       successfullty got a list of positions
+         create and get position :
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\PositionAPITest.js:54:22)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  26) position test suite
+       succeffully edited a position
+         create:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\PositionAPITest.js:81:23)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  27) position test suite
+       successfully deleted a position
+         create, delete, verify :
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\PositionAPITest.js:98:23)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  28) position test suite
+       some errors
+         there is no correspondence between the position parameters :
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\PositionAPITest.js:112:22)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  29) position test suite
+       some errors
+         negative maxWeight:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\PositionAPITest.js:117:22)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  30) position test suite
+       some errors
+         negative maxVolume:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\PositionAPITest.js:122:22)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  31) Restock Orders Testing
+       Add and get a new Restock
+         Add a new Restock Order tests
+           Succesfully add and get a new Restock Order:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\RestockOrderAPITest.js:36:26)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  32) Restock Orders Testing
+       Add and get a new Restock
+         Add a new Restock Order tests
+           Negative supplierId:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\RestockOrderAPITest.js:46:26)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  33) Restock Orders Testing
+       Add and get a new Restock
+         Add a new Restock Order tests
+           Malformed date:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\RestockOrderAPITest.js:51:26)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  34) Restock Orders Testing
+       Get restock orders
+         get all restock orders:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\RestockOrderAPITest.js:60:22)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  35) Restock Orders Testing
+       Get restock orders
+         get issued restock orders:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\RestockOrderAPITest.js:67:22)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  36) Restock Orders Testing
+       Get restock orders
+         get restock orders by id:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\RestockOrderAPITest.js:72:22)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  37) Restock Orders Testing
+       Items to be returned in restock order test suite
+         Restock Order in COMPLETEDRETURN state:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\RestockOrderAPITest.js:81:22)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  38) Restock Orders Testing
+       Items to be returned in restock order test suite
+         Restock Order in a state different from COMPLETEDRETURN:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\RestockOrderAPITest.js:88:26)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  39) Restock Orders Testing
+       PUT Requests tests to Restock Orders
+         Modify State of a Restock Order by id
+           Edit restock order state with proper id:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\RestockOrderAPITest.js:100:26)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  40) Restock Orders Testing
+       PUT Requests tests to Restock Orders
+         Modify State of a Restock Order by id
+           Edit non-existing Restock Order:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\RestockOrderAPITest.js:110:26)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  41) Restock Orders Testing
+       PUT Requests tests to Restock Orders
+         Modify State of a Restock Order by id
+           Edit Restock Order with improper state:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\RestockOrderAPITest.js:116:26)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  42) Restock Orders Testing
+       PUT Requests tests to Restock Orders
+         Add a list of SKUItems to a Restock Order by id
+           Successfully add a list of SKUItems:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\RestockOrderAPITest.js:131:25)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  43) Restock Orders Testing
+       PUT Requests tests to Restock Orders
+         Add a list of SKUItems to a Restock Order by id
+           State of Restock Order different from DELIVERED:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\RestockOrderAPITest.js:141:26)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  44) Restock Orders Testing
+       PUT Requests tests to Restock Orders
+         Add a list of SKUItems to a Restock Order by id
+           State of Restock Order different from DELIVERED:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\RestockOrderAPITest.js:150:26)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  45) Restock Orders Testing
+       PUT Requests tests to Restock Orders
+         Add a transportNote to a Restock Order by id
+           Successfully add a transportNote to a Restock Order:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\RestockOrderAPITest.js:162:26)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  46) Restock Orders Testing
+       PUT Requests tests to Restock Orders
+         Add a transportNote to a Restock Order by id
+           Add transportNote to Restock Order with state different from DELIVERY:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\RestockOrderAPITest.js:171:26)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  47) Restock Orders Testing
+       PUT Requests tests to Restock Orders
+         Add a transportNote to a Restock Order by id
+           Add transportNote to Restock Order with issueDate newer than delivery date:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\RestockOrderAPITest.js:180:26)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  48) Restock Orders Testing
+       DELETE Requests tests to Restock Orders
+         Delete a Restock Order by id
+           Succesfully delete a Restock Order:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\RestockOrderAPITest.js:189:26)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  49) Return Orders Tests
+       Create Return Orders Tests
+         Succesfullly create a Return Order:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\ReturnOrderAPITest.js:36:22)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  50) Return Orders Tests
+       Create Return Orders Tests
+         New Return Order with non-existing restockOrderId:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\ReturnOrderAPITest.js:45:22)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  51) Return Orders Tests
+       Create Return Orders Tests
+         New Return Order with malformed date:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\ReturnOrderAPITest.js:54:22)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  52) Return Orders Tests
+       Get Return Orders Tests
+         All Return Orders
+           Get all Return Orders test:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\ReturnOrderAPITest.js:62:26)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  53) Return Orders Tests
+       Get Return Orders Tests
+         Return Orders by Id
+           Successfully get a Return Order by Id:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\ReturnOrderAPITest.js:69:26)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  54) Return Orders Tests
+       Get Return Orders Tests
+         Return Orders by Id
+           Get a non-existing Return Order:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\ReturnOrderAPITest.js:75:26)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  55) Return Orders Tests
+       Get Return Orders Tests
+         Return Orders by Id
+           Non-numeric id test:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\ReturnOrderAPITest.js:80:26)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  56) Return Orders Tests
+       Delete Return Orders Tests
+         Successfully delete a Return Order:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\ReturnOrderAPITest.js:90:22)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  57) Return Orders Tests
+       Delete Return Orders Tests
+         Delete non-existing Return Order:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\ReturnOrderAPITest.js:95:22)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  58) sku test suite
+       verify there are no skus at start
+         get skus:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\SKUAPITest.js:37:22)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  59) sku test suite
+       successfully created a sku
+         add sku:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\SKUAPITest.js:47:23)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  60) sku test suite
+       successfully deleted a sku
+         add and delete a sku:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\SKUAPITest.js:74:22)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  61) sku test suite
+       successfully got a list of skus
+         add some skus and get all:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\SKUAPITest.js:91:22)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  62) sku test suite
+       position test
+         successfully set a position to a sku:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\SKUAPITest.js:114:23)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  63) sku test suite
+       some errors
+         search for a not existant sku:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\SKUAPITest.js:162:35)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  64) sku test suite
+       some errors
+         negative weight in creation:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\SKUAPITest.js:167:35)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  65) sku test suite
+       some errors
+         negative volume in creation:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\SKUAPITest.js:172:35)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  66) sku test suite
+       some errors
+         negative price in creation:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\SKUAPITest.js:177:35)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  67) sku test suite
+       some errors
+         negative quantity in creation:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\SKUAPITest.js:182:35)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  68) sku test suite
+       some errors
+         an undefined parameter in creation:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\SKUAPITest.js:187:35)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  69) sku test suite
+       some errors
+         modify a non existant sku:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\SKUAPITest.js:192:35)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  70) sku test suite
+       some errors
+         negative parameters in modifySku:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\SKUAPITest.js:198:36)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  71) sku test suite
+       some errors
+         NaN parameters in modifySku:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\SKUAPITest.js:207:36)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  72) sku test suite
+       some errors
+         too much volume for position:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\SKUAPITest.js:216:23)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  73) sku test suite
+       some errors
+         already occupied position:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\SKUAPITest.js:228:23)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  74) skuitem test suite
+       successfully added a skuitem
+         add skuitem:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\SKUItemAPITest.js:36:22)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  75) skuitem test suite
+       successfully added a skuitem
+         get skuitems by skuid:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\SKUItemAPITest.js:66:22)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  76) skuitem test suite
+       successfully added a skuitem
+         get skuitem by rfid:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\SKUItemAPITest.js:80:22)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  77) skuitem test suite
+       successfully edited a skuitem
+         modify skuitem:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\SKUItemAPITest.js:96:22)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  78) skuitem test suite
+       successfully deleted an skuitem
+         delete skuitem:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\SKUItemAPITest.js:118:22)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  79) skuitem test suite
+       some errors
+         get non existant skuitem:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\SKUItemAPITest.js:138:22)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  80) skuitem test suite
+       some errors
+         invalid rfid in get:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\SKUItemAPITest.js:142:22)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  81) skuitem test suite
+       some errors
+         undefined rfid in get:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\SKUItemAPITest.js:146:22)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  82) skuitem test suite
+       some errors
+         get skuitems of non existing skuitem:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\SKUItemAPITest.js:150:22)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  83) skuitem test suite
+       some errors
+         create skuitem with wrong rfid:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\SKUItemAPITest.js:156:22)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  84) skuitem test suite
+       some errors
+         create skuitem with wrong date:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\SKUItemAPITest.js:162:22)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  85) skuitem test suite
+       some errors
+         create skuitem with a non existant skuId (this is the last check before creation):
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\SKUItemAPITest.js:168:22)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  86) skuitem test suite
+       some errors
+         edit non existant skuitem:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\SKUItemAPITest.js:174:22)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  87) skuitem test suite
+       some errors
+         edit skuitem with wrong rfid:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\SKUItemAPITest.js:179:22)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  88) skuitem test suite
+       some errors
+         edit skuitem with wrong date:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\SKUItemAPITest.js:191:22)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  89) Test Descriptor test suite
+       Standard Test Descriptor getters
+         get all test descriptors:
+     Error: connect ECONNREFUSED 127.0.0.1:3001
+      at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1157:16)
+
+  90) Test Descriptor test suite
+       Standard Test Descriptor getters
+         get test descriptor by id:
+     Error: connect ECONNREFUSED 127.0.0.1:3001
+      at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1157:16)
+
+  91) Test Descriptor test suite
+       POST Requests tests to Test Descriptor
+         Add a new Test Descriptor tests
+           Succesfully add a new Test Descriptor:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\TestDescriptorAPI.js:51:26)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  92) Test Descriptor test suite
+       POST Requests tests to Test Descriptor
+         Add a new Test Descriptor tests
+           Test Descriptor not added, no sku associated idSKU :
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\TestDescriptorAPI.js:62:26)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  93) Test Descriptor test suite
+       POST Requests tests to Test Descriptor
+         Add a new Test Descriptor tests
+           Test Descriptor not added, validation of request body failed :
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\TestDescriptorAPI.js:67:26)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  94) Test Descriptor test suite
+       PUT Requests tests to Test Descriptor
+         Edit a Test Descriptor tests
+           Succesfully edit Test Descriptor:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\TestDescriptorAPI.js:76:26)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  95) Test Descriptor test suite
+       PUT Requests tests to Test Descriptor
+         Edit a Test Descriptor tests
+           Test Descriptor not edited, no test descriptor associated to id :
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\TestDescriptorAPI.js:86:26)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  96) Test Descriptor test suite
+       PUT Requests tests to Test Descriptor
+         Edit a Test Descriptor tests
+           Test Descriptor not edited, validation of request body failed because of string id:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\TestDescriptorAPI.js:91:26)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  97) Test Descriptor test suite
+       DELETE Requests tests to Test Descriptor
+         Delete a Test Descriptor tests
+           Succesfully delete a Test Descriptor:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\TestDescriptorAPI.js:100:26)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  98) Test Descriptor test suite
+       DELETE Requests tests to Test Descriptor
+         Delete a Test Descriptor tests
+           Test Descriptor not deleted, validation of id failed :
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\TestDescriptorAPI.js:105:26)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  99) Test Result test suite
+       Standard Test Result getters
+         Succesfully get all test results:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\TestResultAPITest.js:32:22)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  100) Test Result test suite
+       Standard Test Result getters
+         Unsuccesfully get all test results, no sku item associated rfid :
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\TestResultAPITest.js:38:26)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  101) Test Result test suite
+       Standard Test Result getters
+         Unsuccesfully get all test results, validation of rfid failed:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\TestResultAPITest.js:44:26)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  102) Test Result test suite
+       Standard Test Result getters
+         Succesfully get a test result :
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\TestResultAPITest.js:49:22)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  103) Test Result test suite
+       Standard Test Result getters
+         Unsuccesfully get a test results, no sku item associated rfid :
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\TestResultAPITest.js:59:22)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  104) Test Result test suite
+       Standard Test Result getters
+         Unsuccesfully get a test results, validation of rfid failed:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\TestResultAPITest.js:64:26)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  105) Test Result test suite
+       POST Requests tests to Test Result
+         Add a new Test result tests
+           Succesfully add a new Test result:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\TestResultAPITest.js:74:26)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  106) Test Result test suite
+       POST Requests tests to Test Result
+         Add a new Test result tests
+           Test Result not added, no sku item associated to rfid :
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\TestResultAPITest.js:86:26)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  107) Test Result test suite
+       POST Requests tests to Test Result
+         Add a new Test result tests
+           Test Result not added, validation of request body failed :
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\TestResultAPITest.js:91:26)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  108) Test Result test suite
+       PUT Requests tests to Test Result
+         Edit a Test Result tests
+           Succesfully edit Test Resut:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\TestResultAPITest.js:102:26)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  109) Test Result test suite
+       PUT Requests tests to Test Result
+         Edit a Test Result tests
+           Test Result not edited, no sku item associated to rfid :
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\TestResultAPITest.js:114:26)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  110) Test Result test suite
+       PUT Requests tests to Test Result
+         Edit a Test Result tests
+           Test Result not edited, validation of request body failed because of wrong rfid:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\TestResultAPITest.js:119:26)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  111) Test Result test suite
+       DELETE Requests tests to Test Result
+         Delete a Test Result tests
+           Succesfully delete a Test Descriptor:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\TestResultAPITest.js:129:26)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  112) Test Result test suite
+       DELETE Requests tests to Test Result
+         Delete a Test Result tests
+           Test Result not deleted, validation of id failed :
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\TestResultAPITest.js:134:26)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  113) User test suite
+       Standard User getters
+         Succesfully get all user info:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\UserAPITest.js:34:22)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  114) User test suite
+       Standard User getters
+         Succesfully get all suppliers:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\UserAPITest.js:51:22)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  115) User test suite
+       Standard User getters
+         Succesfully get all users:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\UserAPITest.js:60:22)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  116) User test suite
+       POST Requests tests to User
+         Add a new user tests
+           Succesfully add a new user:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\UserAPITest.js:73:26)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  117) User test suite
+       POST Requests tests to User
+         Add a new user tests
+           User not added, user with same email and type already exists :
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\UserAPITest.js:88:26)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  118) User test suite
+       POST Requests tests to User
+         Add a new user tests
+           User not added, wrong user password :
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\UserAPITest.js:97:26)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  119) User test suite
+       POST Requests tests to User
+         User session test
+           Succesfully log a manager:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\UserAPITest.js:108:26)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  120) User test suite
+       POST Requests tests to User
+         User session test
+           Succesfully log a customer:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\UserAPITest.js:115:26)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  121) User test suite
+       POST Requests tests to User
+         User session test
+           Succesfully log a supplier:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\UserAPITest.js:122:26)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  122) User test suite
+       POST Requests tests to User
+         User session test
+           Succesfully log a clerk:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\UserAPITest.js:129:26)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  123) User test suite
+       POST Requests tests to User
+         User session test
+           Succesfully log a quality empolyee:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\UserAPITest.js:137:26)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  124) User test suite
+       POST Requests tests to User
+         User session test
+           Succesfully log a delivery empolyee:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\UserAPITest.js:144:26)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  125) User test suite
+       POST Requests tests to User
+         User session test
+           Succesfully logout:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\UserAPITest.js:152:26)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  126) User test suite
+       PUT Requests tests to User
+         Edit a user tests
+           Succesfully edit user:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\UserAPITest.js:162:26)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  127) User test suite
+       PUT Requests tests to User
+         Edit a user tests
+           User not edited, no user associated to username :
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\UserAPITest.js:174:26)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  128) User test suite
+       PUT Requests tests to User
+         Edit a user tests
+           User not edited, username format is not valid :
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\UserAPITest.js:183:26)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  129) User test suite
+       DELETE Requests tests to user
+         Delete a user tests
+           Succesfully delete a user:
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\UserAPITest.js:196:26)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  130) User test suite
+       DELETE Requests tests to user
+         Delete a user tests
+           User not deleted, validation of username failed :
+     TypeError: Cannot read properties of undefined (reading 'status')
+      at Context.<anonymous> (test\UserAPITest.js:208:26)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+
+

@@ -1,0 +1,46 @@
+POST http://localhost:3001/api/managerSessions HTTP/1.1
+content-type: application/json
+
+{
+    "username": "manager1@ezwh.com",
+    "password":"testpassword"
+}
+
+###
+GET http://localhost:3001/api/skuitems HTTP/1.1
+content-type: application/json
+
+###
+GET http://localhost:3001/api/skuitems/sku/1 HTTP/1.1
+content-type: application/json
+
+###
+GET http://localhost:3001/api/skuitems/12345678901234567890123456789015 HTTP/1.1
+content-type: application/json
+
+###
+POST http://localhost:3001/api/skuitem HTTP/1.1
+content-type: application/json
+
+{
+            "RFID":"12345678901234567890123456700015",
+            "SKUId":4,
+            "Available":1,
+            "DateOfStock":"2021/11/29 12:30"
+        }
+
+###
+PUT http://localhost:3001/api/skuitems/12345678901234567890123456789015 HTTP/1.1
+content-type: application/json
+
+{
+        "newRFID":"12345678901234567890123456789016",
+        "newAvailable":1,
+        "newDateOfStock":"2021/11/29 13:30"
+    }
+
+###
+DELETE http://localhost:3001/api/skuitems/12345678901234567890123456789016 HTTP/1.1
+content-type: application/json
+
+

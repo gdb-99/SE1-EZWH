@@ -1,0 +1,42 @@
+POST http://localhost:3001/api/managerSessions HTTP/1.1
+content-type: application/json
+
+{
+    "username": "manager1@ezwh.com",
+    "password":"testpassword"
+}
+
+###
+GET http://localhost:3001/api/skuitems/12345678901234567890123456789015/testResults HTTP/1.1
+content-type: application/json
+
+###
+GET http://localhost:3001/api/skuitems/12345678901234567890123456789015/testResults/1 HTTP/1.1
+content-type: application/json
+
+###
+POST http://localhost:3001/api/skuitems/testResult HTTP/1.1
+content-type: application/json
+
+ {
+            "rfid":"12345678901234567890123456789015",
+            "idTestDescriptor":3,
+            "Date":"2021/11/28",
+            "Result": true
+        }
+
+###
+PUT http://localhost:3001/api/skuitems/12345678901234567890123456789015/testResult/1 HTTP/1.1
+content-type: application/json
+
+{
+            "newIdTestDescriptor":4,
+            "newDate":"2021/11/28",
+            "newResult": false
+        }
+
+###
+DELETE http://localhost:3001/api/skuitems/12345678901234567890123456789015/testResult/1 HTTP/1.1
+content-type: application/json
+
+###

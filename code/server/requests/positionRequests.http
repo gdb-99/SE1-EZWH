@@ -1,0 +1,52 @@
+POST http://localhost:3001/api/managerSessions HTTP/1.1
+content-type: application/json
+
+{
+    "username": "manager1@ezwh.com",
+    "password":"testpassword"
+}
+
+###
+GET http://localhost:3001/api/positions HTTP/1.1
+content-type: application/json
+
+###
+POST http://localhost:3001/api/position HTTP/1.1
+content-type: application/json
+
+   {
+            "positionID":"300234543413",
+            "aisleID": "3002",
+            "row": "3454",
+            "col": "3413",
+            "maxWeight": 1000000,
+            "maxVolume": 1000000
+        }
+
+###
+PUT http://localhost:3001/api/position/500224542413 HTTP/1.1
+content-type: application/json
+
+  {
+            "newAisleID": "5002",
+            "newRow": "2454",
+            "newCol": "2413",
+            "newMaxWeight": 100000,
+            "newMaxVolume": 100000,
+            "newOccupiedWeight": 0,
+            "newOccupiedVolume":0
+        }
+
+###
+PUT http://localhost:3001/api/position/123456789012/changeID HTTP/1.1
+content-type: application/json
+
+{
+            "newPositionID": "800434543412"
+        }
+
+###
+DELETE http://localhost:3001/api/position/123456789012 HTTP/1.1
+content-type: application/json
+
+###
